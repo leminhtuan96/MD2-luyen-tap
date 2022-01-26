@@ -8,22 +8,39 @@ function createArray($number)
     return $arr;
 }
 
-print_r(createArray(5));
+$arr = createArray(5);
+print_r($arr);
+echo "<br>";
 
-function sortArray($array)
+function sortArray($arr)
 {
-    for ($i =0;$i<count($array);$i++){
-        $min = $array[$i];
+    for ($i = 0; $i < count($arr); $i++) {
+        $min = $arr[$i];
         $index = $i;
-        for ($j = $i+1;$j = count($array);$j++){
-            if ($min > $array[$j]){
-                $min = $array[$j];
+        for ($j = $i + 1; $j < count($arr); $j++) {
+            if ($min > $arr[$j]) {
+                $min = $arr[$j];
                 $index = $j;
             }
         }
-        $temp = $array[$i];
-        $array[$i] = $min;
-        $array[$index] = $temp;
+        $temp = $arr[$i];
+        $arr[$i] = $min;
+        $arr[$index] = $temp;
     }
+    return $arr;
 }
 
+
+print_r(sortArray($arr));
+echo "<br>";
+
+function eraseNumber($arr)
+{
+    $array = [];
+    for ($i = 0; $i < count($arr); $i++){
+        if (!in_array($arr[$i],$array)){
+            $array[]=$arr[$i];
+        }
+    }
+    return $array;
+}print_r(eraseNumber([1,1,2,3,4,3,4,2,2,5]));
